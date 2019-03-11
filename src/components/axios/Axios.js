@@ -1,4 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
+// Components
+import Get from './Get';
 
 export default class Axios extends Component {
   render() {
@@ -20,17 +23,7 @@ export default class Axios extends Component {
         </div>
         <div className='row'>
           <div className='col'>
-            <div class="card">
-              <div class="card-header">
-                <h5>GET Request</h5>
-              </div>
-              <div class="card-body">
-                <div>
-                  <button className='btn btn-primary' value='Get Todo' />
-                  <button className='btn btn-secondary' value='Clear' />
-                </div>
-              </div>
-            </div>
+            <Get />
           </div>
         </div>
       </div>
