@@ -12,16 +12,14 @@ export default class Get extends Component {
   onClickBtnTwo = () => {
     console.log('Two')
   };
-  
-  render() {
 
+  render() {
     const result = (
       <div>
         <p>test</p>
         <span>test</span>
       </div>
     );
-
     return (
       <div className='get'>
         <Card

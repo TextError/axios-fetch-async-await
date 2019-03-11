@@ -11,6 +11,13 @@ const Card = ({
   onClickBtnTwo,
 }) => {
 
+  const btnTwo = (
+    <button 
+      className='btn btn-secondary'
+      onClick={onClickBtnTwo}
+    >{buttonTwo}</button>
+  )
+
   return (
     <div className="card">
       <div className="card-header">
@@ -22,10 +29,7 @@ const Card = ({
             className='btn btn-primary'
             onClick={onClickBtnOne}
           >{buttonOne}</button>
-          <button 
-            className='btn btn-secondary'
-            onClick={onClickBtnTwo}
-          >{buttonTwo}</button>
+          {buttonTwo ? btnTwo : null }
         </div>
       </div>
       <div className='card-footer'>

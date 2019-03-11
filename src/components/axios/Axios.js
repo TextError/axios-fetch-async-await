@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 // Components
 import Get from './Get';
+import Post from './Post';
 
 export default class Axios extends Component {
   render() {
@@ -24,6 +25,11 @@ export default class Axios extends Component {
         <div className='row'>
           <div className='col'>
             <Get />
+          </div>
+        </div>
+        <div className='row'>
+          <div className='col'>
+            <Post />
           </div>
         </div>
       </div>
