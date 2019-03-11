@@ -6,10 +6,10 @@ const Card = ({
   title,
   buttonOne,
   buttonTwo,
-  resultObj,
+  result,
+  onClickBtnOne,
+  onClickBtnTwo,
 }) => {
-
-  const result = resultObj;
 
   return (
     <div className="card">
@@ -18,8 +18,14 @@ const Card = ({
       </div>
       <div className="card-body">
         <div>
-          <button className='btn btn-primary'>{buttonOne}</button>
-          <button className='btn btn-secondary'>{buttonTwo}</button>
+          <button 
+            className='btn btn-primary'
+            onClick={onClickBtnOne}
+          >{buttonOne}</button>
+          <button 
+            className='btn btn-secondary'
+            onClick={onClickBtnTwo}
+          >{buttonTwo}</button>
         </div>
       </div>
       <div className='card-footer'>
@@ -35,7 +41,9 @@ Card.propTypes = {
   title: PropTypes.string.isRequired,
   buttonOne: PropTypes.string.isRequired,
   buttonTwo: PropTypes.string,
-  resultObj: PropTypes.string.isRequired,
+  onClickBtnOne: PropTypes.func.isRequired,
+  onClickBtnTwo: PropTypes.func,
+  result: PropTypes.object.isRequired,
 };
 
 export default Card;
