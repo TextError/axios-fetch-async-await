@@ -14,8 +14,8 @@ export default class Axios extends Component {
         </div>
         <div className='row'>
           <div className='col'>
-            <div class="card">
-              <div class="card-body">
+            <div className="card">
+              <div className="card-body">
                 This is some text within a card body about axios.
               </div>
             </div>

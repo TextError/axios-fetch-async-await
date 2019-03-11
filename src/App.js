@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 // Components
 import Home from './components/home/Home';
@@ -16,16 +16,14 @@ class App extends Component {
     return (
       <div className="app">
         <Router>
-          <Switch>
-            <div className='container-fluid'>
-              <Navbar />
-              <Route exact path='/home' component={Home} />
-              <Route exact path='/axios' component={Axios} />
-              <Route exact path='/fetch' component={Fetch} />
-              <Route exact path='/async-await' component={AsyncAwait} />
-              <Footer />
-            </div>
-          </Switch>
+          <div className='container-fluid'>
+            <Navbar />
+            <Route exact path='/home' component={Home} />
+            <Route exact path='/axios' component={Axios} />
+            <Route exact path='/fetch' component={Fetch} />
+            <Route exact path='/async-await' component={AsyncAwait} />
+            <Footer />
+          </div>
         </Router>
       </div>
     );
