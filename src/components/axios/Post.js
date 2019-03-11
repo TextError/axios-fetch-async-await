@@ -9,6 +9,10 @@ export default class Post extends Component {
     console.log('One')
   };
 
+  onClickBtnTwo = () => {
+    console.log('Two')
+  };
+
   render() {
     const result = (
       <div>
@@ -20,8 +24,11 @@ export default class Post extends Component {
       <div>
         <Card
           title = 'Post Request'
+          subtitle = 'subtitle https://jsonplaceholder.typicode.com/'
           buttonOne = 'Post Todos'
+          buttonTwo = 'Clear'
           onClickBtnOne = {this.onClickBtnOne}
+          onClickBtnTwo = {this.onClickBtnTwo}
           result = {result}
         />
       </div>
