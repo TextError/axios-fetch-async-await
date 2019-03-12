@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // Axios
-import Axios from 'axios';
+import axios from 'axios'
 
 // Components
 import Card from './Card';
@@ -20,7 +20,10 @@ export default class Get extends Component {
   }
 
   onClickBtnOne = () => {
-    console.log('One')
+    axios
+      .get('https://jsonplaceholder.typicode.com/todos/1')
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err))
   };
 
   onClickBtnTwo = () => {
@@ -28,7 +31,6 @@ export default class Get extends Component {
   };
 
   render() {
-    console.log(this.state.input)
     const result = (
       <div>
         <p>test</p>
