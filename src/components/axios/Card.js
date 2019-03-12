@@ -20,6 +20,7 @@ const Card = ({
 
   const input = (
     <div className='form-group'>
+      <h5>Enter an ID number from 1 - 100</h5>
       <div className='row'>
         <div className='col-3'>
           <input
@@ -77,9 +78,14 @@ Card.propTypes = {
   subtitle: PropTypes.string.isRequired,
   buttonOne: PropTypes.string.isRequired,
   onClickBtnOne: PropTypes.func.isRequired,
+  type: PropTypes.string,
+  name: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
   buttonTwo: PropTypes.string,
   onClickBtnTwo: PropTypes.func,
   result: PropTypes.object.isRequired,
+  error: PropTypes.string
 };
 
 Card.defaultProps = {

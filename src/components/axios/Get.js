@@ -15,8 +15,8 @@ export default class Get extends Component {
     }
   };
 
-  onChange = e => {
-    this.setState({ input: e.target.value })
+  onChange = (e) => {
+    this.setState({ input : e.target.value })
   }
 
   onClickBtnOne = () => {
@@ -40,6 +40,7 @@ export default class Get extends Component {
         <Card
           title = 'Get Request'
           subtitle = 'Subtitle  https://jsonplaceholder.typicode.com/ '
+          name = 'get'
           value = {this.state.input}
           onChange = {this.onChange}
           buttonOne = 'Get Todos'
@@ -47,6 +48,7 @@ export default class Get extends Component {
           onClickBtnOne = {this.onClickBtnOne}
           onClickBtnTwo = {this.onClickBtnTwo}
           result = {result}
+          error = {this.state.errors}
         />
       </div>
     )
