@@ -7,6 +7,7 @@ const Card = ({
   title,
   subtitle,
   type,
+  name,
   value,
   onChange,
   buttonOne,
@@ -17,18 +18,35 @@ const Card = ({
   error,
 }) => {
 
+  const input = (
+    <div className='form-group'>
+      <div className='row'>
+        <div className='col-3'>
+          <input
+            type = {type}
+            className={classnames('form-control form-control-xsm', {'is-invalid' : error})}
+            name = {name}
+            value = {value}
+            onChange = {onChange}
+          />
+        </div>
+      </div>
+      {error && <div className='invalid-feedback'>{error}</div>}
+    </div>
+  )
+
   const btnOne = (
     <button 
       className='btn btn-primary'
       onClick={onClickBtnOne}
     >{buttonOne}</button>
-  )
+  );
   const btnTwo = (
     <button 
       className='btn btn-secondary'
       onClick={onClickBtnTwo}
     >{buttonTwo}</button>
-  )
+  );
 
   return (
     <div className="card">
@@ -38,20 +56,9 @@ const Card = ({
       </div>
       <div className="card-body">
         <div>
-          <p>Enter Id number from 1 - 100</p>
-          <div className='form-group'>
-            <div className='row'>
-              <div className='col-3'>
-                <input
-                  type={type}
-                  className={classnames('form-control form-control-xsm', {'is-invalid' : error})}
-                  value={value}
-                  onChange={onChange}
-                />
-              </div>
-            </div>
-            {error && <div className='invalid-feedback'>{error}</div>}
-          </div>
+          {name ? input : null}
+        </div>
+        <div>
           {btnOne}
           {btnTwo}
         </div>
