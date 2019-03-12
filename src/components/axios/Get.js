@@ -11,6 +11,7 @@ export default class Get extends Component {
     super();
     this.state = {
       input: '',
+      response: {},
       errors: '',
     }
   };
@@ -22,7 +23,7 @@ export default class Get extends Component {
   onClickBtnOne = () => {
     axios
       .get('https://jsonplaceholder.typicode.com/todos/1')
-      .then(res => console.log(res.data))
+      .then(res => this.setState({ response: res.data }))
       .catch(err => console.log(err))
   };
 
@@ -31,12 +32,11 @@ export default class Get extends Component {
   };
 
   render() {
-    const result = (
-      <div>
-        <p>test</p>
-        <span>test</span>
-      </div>
-    );
+
+    const { response } = this.state;
+
+    const result = Object.entries(response).map(i => <p>{i}</p>);
+    console.log(result)
     return (
       <div className='get'>
         <Card
