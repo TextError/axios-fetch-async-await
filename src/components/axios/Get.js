@@ -6,6 +6,9 @@ import axios from 'axios'
 // Components
 import Card from './Card';
 
+// Common
+import validateAxiosInput from '../validator/axios';
+
 export default class Get extends Component {
   constructor() {
     super();
@@ -23,10 +26,20 @@ export default class Get extends Component {
   onClickBtnOne = () => {
     const { id } = this.state;
 
-    axios
-      .get(`https://jsonplaceholder.typicode.com/comments/${id}`)
-      .then(res => this.setState({ response: res.data }))
-      .catch(err => console.log(err))
+    // Validation
+    const { errors, isValid } = validateAxiosInput(id);
+
+    // Check Validation
+    if (!isValid) {
+      // Set Errors
+      this.setState({ errors })
+    } else {
+      axios
+        .get(`https://jsonplaceholder.typicode.com/comments/${id}`)
+        .then(res => this.setState({ response: res.data }))
+        .catch(err => console.log(err))
+    }
+
   };
 
   onClickBtnTwo = () => {
@@ -36,6 +49,8 @@ export default class Get extends Component {
   render() {
     
     const { response } = this.state;
+
+    console.log(this.state.errors)
 
     return (
       <div className='get'>
