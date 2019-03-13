@@ -22,8 +22,9 @@ export default class Get extends Component {
   }
 
   onClickBtnOne = () => {
+    const { id } = this.state;
     axios
-      .get('https://jsonplaceholder.typicode.com/todos/1')
+      .get(`https://jsonplaceholder.typicode.com/comments/${id}`)
       .then(res => this.setState({ response: res.data }))
       .catch(err => console.log(err))
   };
