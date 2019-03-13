@@ -11,6 +11,7 @@ export default class Get extends Component {
     super();
     this.state = {
       input: '',
+      id: '1',
       response: {},
       errors: '',
     }
@@ -32,24 +33,21 @@ export default class Get extends Component {
   };
 
   render() {
-
+    
     const { response } = this.state;
 
-    const result = Object.entries(response).map(i => <p>{i}</p>);
-    console.log(result)
     return (
       <div className='get'>
         <Card
           title = 'Get Request'
-          subtitle = 'Subtitle  https://jsonplaceholder.typicode.com/ '
-          name = 'get'
-          value = {this.state.input}
-          onChange = {this.onChange}
+          subtitle = 'Subtitle  https://jsonplaceholder.typicode.com/'
           buttonOne = 'Get Todos'
           buttonTwo = 'Clear'
           onClickBtnOne = {this.onClickBtnOne}
           onClickBtnTwo = {this.onClickBtnTwo}
-          result = {result}
+          onChange = {this.onChange}
+          value = {this.state.input}
+          response = {response}
           error = {this.state.errors}
         />
       </div>

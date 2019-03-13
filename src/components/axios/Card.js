@@ -1,22 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import isEmpty from '../common/isEmpty';
 
 
 const Card = ({
   title,
   subtitle,
-  type,
-  name,
-  value,
-  onChange,
   buttonOne,
   buttonTwo,
-  result,
   onClickBtnOne,
   onClickBtnTwo,
+  onChange,
+  value,
+  response,
   error,
+  type,
 }) => {
+  let result;
+  
+  if (!isEmpty(response)) {
+    result = Object.entries(response).map(([key, value]) => <p key={key}>{key} - {value}</p> )
+  }
+
 
   const input = (
     <div className='form-group'>
@@ -26,7 +32,6 @@ const Card = ({
           <input
             type = {type}
             className={classnames('form-control form-control-xsm', {'is-invalid' : error})}
-            name = {name}
             value = {value}
             onChange = {onChange}
           />
@@ -57,7 +62,7 @@ const Card = ({
       </div>
       <div className="card-body">
         <div>
-          {name ? input : null}
+          {input}
         </div>
         <div>
           {btnOne}
@@ -79,12 +84,11 @@ Card.propTypes = {
   buttonOne: PropTypes.string.isRequired,
   onClickBtnOne: PropTypes.func.isRequired,
   type: PropTypes.string,
-  name: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func,
   buttonTwo: PropTypes.string,
   onClickBtnTwo: PropTypes.func,
-  result: PropTypes.object.isRequired,
+  response: PropTypes.object,
   error: PropTypes.string
 };
 
