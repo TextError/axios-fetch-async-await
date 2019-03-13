@@ -26,7 +26,7 @@ const Card = ({
 
   const input = (
     <div className='form-group'>
-      <h5>Enter an ID number from 1 - 100</h5>
+      <h5>Enter an ID number from 1 - 500</h5>
       <div className='row'>
         <div className='col-3'>
           <input

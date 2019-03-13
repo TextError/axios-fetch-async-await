@@ -10,7 +10,6 @@ export default class Get extends Component {
   constructor() {
     super();
     this.state = {
-      input: '',
       id: '1',
       response: {},
       errors: '',
@@ -18,11 +17,12 @@ export default class Get extends Component {
   };
 
   onChange = (e) => {
-    this.setState({ input : e.target.value })
+    this.setState({ id : e.target.value })
   }
 
   onClickBtnOne = () => {
     const { id } = this.state;
+
     axios
       .get(`https://jsonplaceholder.typicode.com/comments/${id}`)
       .then(res => this.setState({ response: res.data }))
@@ -30,7 +30,7 @@ export default class Get extends Component {
   };
 
   onClickBtnTwo = () => {
-    console.log('Two')
+    this.setState({ response: {} })
   };
 
   render() {
@@ -41,7 +41,7 @@ export default class Get extends Component {
       <div className='get'>
         <Card
           title = 'Get Request'
-          subtitle = 'Subtitle  https://jsonplaceholder.typicode.com/'
+          subtitle = 'https://jsonplaceholder.typicode.com/comments/id'
           buttonOne = 'Get Todos'
           buttonTwo = 'Clear'
           onClickBtnOne = {this.onClickBtnOne}
