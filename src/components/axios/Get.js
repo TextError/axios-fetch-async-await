@@ -8,12 +8,13 @@ import Card from './Card';
 
 // Common
 import validateAxiosInput from '../validator/axios';
+import isEmpty from '../common/isEmpty';
 
 export default class Get extends Component {
   constructor() {
     super();
     this.state = {
-      id: '1',
+      id: '',
       response: {},
       errors: '',
     }
@@ -25,6 +26,9 @@ export default class Get extends Component {
 
   onClickBtnOne = () => {
     const { id } = this.state;
+    const url = 'https://jsonplaceholder.typicode.com/comments/'
+
+    const URL = !isEmpty(id) ? url : url+id
 
     // Validation
     const { errors, isValid } = validateAxiosInput(id);
@@ -35,8 +39,8 @@ export default class Get extends Component {
       this.setState({ errors })
     } else {
       axios
-        .get(`https://jsonplaceholder.typicode.com/comments/${id}`)
-        .then(res => this.setState({ response: res.data }))
+        .get(URL)
+        .then(res => console.log(res.data))
         .catch(err => console.log(err))
     }
 
