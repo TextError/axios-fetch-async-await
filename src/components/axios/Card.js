@@ -18,12 +18,17 @@ const Card = ({
   type,
 }) => {
   let result;
-  
-  if (!isEmpty(response)) {
-    result = Object.entries(response).map(([key, value]) => <p key={key}>{key} - {value}</p> )
+
+  if (!isEmpty(response) && (response.result.length === undefined)) {
+    result = Object.entries(Object.values(response)[0]).map(([key, value]) => <p key={key}>{key} - {value}</p>)
   }
-
-
+  if (!isEmpty(response) && (response.result.length === 500)) {
+    result = Object.values(Object.values(response))[0].map(i => {
+      const data = Object.entries(i).map((key, i) => <p key={key}>{key}</p>);
+      return data;
+    })
+  }
+  
   const input = (
     <div className='form-group'>
       <h5>Enter an ID number from 1 - 500</h5>

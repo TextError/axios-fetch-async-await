@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // Axios
-import axios from 'axios'
+import axios from 'axios';
 
 // Components
 import Card from './Card';
@@ -28,7 +28,7 @@ export default class Get extends Component {
     const { id } = this.state;
     const url = 'https://jsonplaceholder.typicode.com/comments/'
 
-    const URL = !isEmpty(id) ? url : url+id
+    const URL = isEmpty(id) ? url : url+id
 
     // Validation
     const { errors, isValid } = validateAxiosInput(id);
@@ -40,7 +40,7 @@ export default class Get extends Component {
     } else {
       axios
         .get(URL)
-        .then(res => console.log(res.data))
+        .then(res => this.setState({ response: res.data }))
         .catch(err => console.log(err))
     }
 
@@ -52,9 +52,11 @@ export default class Get extends Component {
 
   render() {
     
-    const { response } = this.state;
-
-    console.log(this.state.errors)
+    const result = this.state.response;
+    let response;
+    if (!isEmpty(result)) {
+      response = {result}
+    }
 
     return (
       <div className='get'>
